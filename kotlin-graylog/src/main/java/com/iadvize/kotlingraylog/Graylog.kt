@@ -22,13 +22,15 @@ typealias LogValues = JSONObject
 
 object Graylog {
 
-    private const val LOG_QUEUE_KEY = "GRAYLOG_LOG_QUEUE_KEY"
+    private const val LOG_QUEUE_KEY = "graylog.queue"
     // Stock 1000 logs max in the queue.
     private const val LOG_QUEUE_MAX = 1000
     // Send 10 logs max at the same time.
     private const val LOG_SEND_MAX = 10
     // Check the queue every 5mn.
     private const val LOG_INTERVAL = 5 * 60L
+    // Key in front of which we save logs in the User Defaults.
+    private const val USER_DEFAULTS_KEY = "graylog.logs"
 
     private val jsonHeader = MediaType.parse("application/json; charset=utf-8")
     private val client = OkHttpClient.Builder().build()
@@ -38,7 +40,7 @@ object Graylog {
     private lateinit var url: URL
 
     fun init(context: Context, url: URL) {
-        this.securedPreferences = SecurePreferences(context.applicationContext, Graylog::class.java.name, null)
+        this.securedPreferences = SecurePreferences(context.applicationContext, USER_DEFAULTS_KEY, null)
         this.url = url
         start()
     }
