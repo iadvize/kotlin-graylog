@@ -1,4 +1,4 @@
-Kotlin Graylog [![CircleCI](https://circleci.com/gh/iadvize/kotlin-graylog.svg?style=svg)](https://circleci.com/gh/iadvize/kotlin-graylog)
+Kotlin Graylog [![CircleCI](https://circleci.com/gh/iadvize/kotlin-graylog.svg?style=svg)](https://circleci.com/gh/iadvize/kotlin-graylog) [![Download](https://api.bintray.com/packages/iadvize/maven/android-kotlin-graylog/images/download.svg) ](https://bintray.com/iadvize/maven/android-kotlin-graylog/_latestVersion)
 ==================
 
 Client-side Android logging library for Graylog.
@@ -25,7 +25,7 @@ Graylog.log(values)
 
 Link your project with the Kotlin Graylog dependency, add this line to your app's `build.gradle`:
 ```gradle
-implementation 'com.iadvize:kotlin-graylog:1.0.1'
+implementation 'com.iadvize:kotlin-graylog:{version}'
 ```
 
 ## Contribute
