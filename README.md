@@ -1,4 +1,4 @@
-Kotlin Graylog
+Kotlin Graylog [![CircleCI](https://circleci.com/gh/iadvize/kotlin-graylog.svg?style=svg)](https://circleci.com/gh/iadvize/kotlin-graylog)
 ==================
 
 Client-side Android logging library for Graylog.
