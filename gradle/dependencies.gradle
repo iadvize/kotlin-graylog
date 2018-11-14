@@ -1,0 +1,35 @@
+def versions = [
+        androidTest             : '1.0.0-beta02',
+        bintray                 : '1.8.1',
+        gradle                  : '3.2.1',
+        jUnit                   : '4.12',
+        kotlin                  : '1.3.0',
+        kotlinCoroutines        : '1.0.0',
+        kotlinJre               : '1.2.71',
+        okhttp3                 : '3.11.0',
+        robolectric             : '4.0-beta-2',
+        securePreferences       : '0.1.6',
+        testRunner              : '1.0.2'
+]
+
+ext.androidConfig = [
+        buildToolsVersion       : '28.0.3',
+        compileSdkVersion       : 28,
+        minSdkVersion           : 16,
+        targetSdkVersion        : 28
+]
+
+ext.dep = [
+        androidPlugin           : "com.android.tools.build:gradle:$versions.gradle",
+        androidTest             : "androidx.test:core:$versions.androidTest",
+        bintray                 : "com.jfrog.bintray.gradle:gradle-bintray-plugin:$versions.bintray",
+        jUnit                   : "junit:junit:$versions.jUnit",
+        kotlinCoroutines        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinCoroutines",
+        kotlinGradlePlugin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlinJre",
+        okhttp3                 : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
+        robolectric             : "org.robolectric:robolectric:$versions.robolectric",
+        securePreferences       : "com.github.scottyab:secure-preferences:v$versions.securePreferences",
+        testRules               : "com.android.support.test:rules:$versions.testRunner",
+        testRunner              : "com.android.support.test:runner:$versions.testRunner",
+]

@@ -1,0 +1,78 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/mobile-android-kotlin-graylog
+    docker:
+      # Android the primary container
+      - image: circleci/android:api-26-alpha
+    environment:
+      JVM_OPTS: -Xmx8192m
+    resource_class: xlarge
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "kotlin-graylog/build.gradle" }}
+      - run:
+          name: Accept licenses
+          command: yes | sdkmanager --licenses || true
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - run:
+          name: Build
+          command: ./gradlew clean lint assemble
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "kotlin-graylog/build.gradle" }}
+  unit_test:
+      working_directory: ~/mobile-android-kotlin-graylog
+      docker:
+        # Android the primary container
+        - image: circleci/android:api-26-alpha
+      environment:
+        JVM_OPTS: -Xmx8192m
+      resource_class: xlarge
+      steps:
+        - checkout
+        - run:
+            name: Run Unit Tests
+            command: ./gradlew test
+        - store_artifacts:
+            path: ~/mobile-android-kotlin-graylog/kotlin-graylog/build/test-results
+  upload_bintray:
+      working_directory: ~/mobile-android-kotlin-graylog
+      docker:
+        # Android the primary container
+        - image: circleci/android:api-26-alpha
+      environment:
+        JVM_OPTS: -Xmx8192m
+      resource_class: xlarge
+      steps:
+        - checkout
+        - run:
+            name: Upload build on Bintray
+            command: ./gradlew assemble bintrayUpload
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - unit_test:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+      - upload_bintray:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master

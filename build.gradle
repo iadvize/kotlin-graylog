@@ -1,0 +1,38 @@
+buildscript {
+    apply from: rootProject.file("gradle/dependencies.gradle")
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath dep.androidPlugin
+        classpath dep.bintray
+        classpath dep.kotlinGradlePlugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "http://dl.bintray.com/typesafe/maven-releases" }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+ext {
+    libraryVersionName = "1.0.0"
+    libraryVersionCode = 1
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
