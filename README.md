@@ -25,7 +25,7 @@ Graylog.log(values)
 
 Link your project with the Kotlin Graylog dependency, add this line to your app's `build.gradle`:
 ```gradle
-implementation 'com.iadvize:kotlin-graylog:1.0.0'
+implementation 'com.iadvize:kotlin-graylog:1.0.1'
 ```
 
 ## Contribute
