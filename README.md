@@ -7,7 +7,7 @@ Kotlin Graylog supports versions from API 16.
 
 ## Examples
 
-First of all, you have to initialize with a context and your Graylog endpoint: 
+First of all, you have to initialize the library with a context and your Graylog endpoint: 
 
 ```kotlin
 Graylog.init(context, URL("yourGraylogEndpoint"))
