@@ -61,6 +61,7 @@ workflows:
           filters:
             branches:
               only:
+                - develop
                 - master
       - unit_test:
           requires:
@@ -68,6 +69,7 @@ workflows:
           filters:
             branches:
               only:
+                - develop
                 - master
       - upload_bintray:
           requires:
