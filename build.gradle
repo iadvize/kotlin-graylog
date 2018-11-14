@@ -23,8 +23,8 @@ allprojects {
 }
 
 ext {
-    libraryVersionName = "1.0.0"
-    libraryVersionCode = 1
+    libraryVersionName = "1.0.1"
+    libraryVersionCode = 2
 }
 
 allprojects {
