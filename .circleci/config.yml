@@ -72,6 +72,7 @@ workflows:
       - upload_bintray:
           requires:
             - build
+            - unit_test
           filters:
             branches:
               only:

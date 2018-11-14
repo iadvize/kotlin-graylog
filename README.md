@@ -18,7 +18,7 @@ After that, you can send log to your Graylog server by calling:
 ```kotlin
 val values = LogValues()
 values.put("name", "value")
-Graylog.log(json)
+Graylog.log(values)
 ```
 
 ## Install
